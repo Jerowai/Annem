@@ -335,9 +335,228 @@
                 opacity: 0;
             }
         }
+        /* Rising Flower Bouquet */
+        .bouquet-container {
+            position: fixed;
+            bottom: -300px;
+            right: 10%;
+            z-index: 1;
+            pointer-events: none;
+            will-change: transform;
+            animation: riseAndFade 10s ease-in-out infinite;
+        }
+
+        @keyframes riseAndFade {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1100px) rotate(15deg);
+                opacity: 0;
+            }
+        }
+
+        .bouquet {
+            position: relative;
+            width: 200px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .b-flower {
+            position: absolute;
+            bottom: 60px;
+            transform-origin: bottom center;
+            animation: gentleSway 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+        }
+
+        @keyframes gentleSway {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(3deg); }
+        }
+
+        .b-petal {
+            position: absolute;
+            width: 15px;
+            height: 25px;
+            border-radius: 50% 50% 50% 0;
+            transform-origin: bottom center;
+        }
+
+        .b-center {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            top: -6px;
+            left: -6px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .stem {
+            position: absolute;
+            width: 2px;
+            background: #2d5a27;
+            bottom: 0;
+            transform-origin: bottom center;
+            z-index: -1;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 20px;
+            height: 10px;
+            background: #4CAF50;
+            border-radius: 50% 0 50% 0;
+            z-index: -1;
+        }
+
+        .ribbon {
+            position: absolute;
+            bottom: 10px;
+            width: 60px;
+            height: 30px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+        .ribbon::before, .ribbon::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            top: -10px;
+        }
+        .ribbon::before { left: -15px; transform: rotate(-30deg); }
+        .ribbon::after { right: -15px; transform: rotate(30deg); }
+
+        @media (max-width: 768px) {
+            .bouquet-container {
+                right: auto;
+                left: 5%;
+                transform: scale(0.7);
+            }
+        }
     </style>
+
 </head>
 <body>
+    <div class="bouquet-container">
+        <div class="bouquet">
+            <!-- Stems -->
+            <div class="stem" style="height: 180px; left: 100px; transform: rotate(-15deg);"></div>
+            <div class="stem" style="height: 210px; left: 100px; transform: rotate(-5deg);"></div>
+            <div class="stem" style="height: 220px; left: 100px; transform: rotate(5deg);"></div>
+            <div class="stem" style="height: 190px; left: 100px; transform: rotate(15deg);"></div>
+            <div class="stem" style="height: 170px; left: 100px; transform: rotate(-25deg);"></div>
+            <div class="stem" style="height: 170px; left: 100px; transform: rotate(25deg);"></div>
+
+            <!-- Flowers -->
+            <!-- Flower 1: Pink -->
+            <div class="b-flower" style="bottom: 180px; left: 70px; animation-delay: 0s;">
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(0deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(60deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(120deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(180deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(240deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(300deg) translateY(-12px);"></div>
+                <div class="b-center"></div>
+            </div>
+            <!-- Flower 2: Turquoise -->
+            <div class="b-flower" style="bottom: 210px; left: 100px; animation-delay: 0.5s;">
+                <div class="b-petal" style="background: #00d4aa; transform: rotate(0deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #00d4aa; transform: rotate(72deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #00d4aa; transform: rotate(144deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #00d4aa; transform: rotate(216deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #00d4aa; transform: rotate(288deg) translateY(-12px);"></div>
+                <div class="b-center"></div>
+            </div>
+            <!-- Flower 3: Gold -->
+            <div class="b-flower" style="bottom: 190px; left: 130px; animation-delay: 1s;">
+                <div class="b-petal" style="background: #ffd700; transform: rotate(0deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ffd700; transform: rotate(72deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ffd700; transform: rotate(144deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ffd700; transform: rotate(216deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ffd700; transform: rotate(288deg) translateY(-12px);"></div>
+                <div class="b-center"></div>
+            </div>
+            <!-- Flower 4: Green -->
+            <div class="b-flower" style="bottom: 160px; left: 40px; animation-delay: 1.5s;">
+                <div class="b-petal" style="background: #4CAF50; transform: rotate(0deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #4CAF50; transform: rotate(72deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #4CAF50; transform: rotate(144deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #4CAF50; transform: rotate(216deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #4CAF50; transform: rotate(288deg) translateY(-12px);"></div>
+                <div class="b-center"></div>
+            </div>
+            <!-- Flower 5: Pink -->
+            <div class="b-flower" style="bottom: 160px; left: 150px; animation-delay: 2s;">
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(0deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(72deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(144deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(216deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ff6b9d; transform: rotate(288deg) translateY(-12px);"></div>
+                <div class="b-center"></div>
+            </div>
+            <!-- Flower 6: Gold -->
+            <div class="b-flower" style="bottom: 230px; left: 80px; animation-delay: 2.5s;">
+                <div class="b-petal" style="background: #ffd700; transform: rotate(0deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ffd700; transform: rotate(72deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ffd700; transform: rotate(144deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ffd700; transform: rotate(216deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #ffd700; transform: rotate(288deg) translateY(-12px);"></div>
+                <div class="b-center"></div>
+            </div>
+            <!-- Flower 7: Turquoise -->
+            <div class="b-flower" style="bottom: 230px; left: 120px; animation-delay: 3s;">
+                <div class="b-petal" style="background: #00d4aa; transform: rotate(0deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #00d4aa; transform: rotate(72deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #00d4aa; transform: rotate(144deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #00d4aa; transform: rotate(216deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #00d4aa; transform: rotate(288deg) translateY(-12px);"></div>
+                <div class="b-center"></div>
+            </div>
+            <!-- Flower 8: Green -->
+            <div class="b-flower" style="bottom: 140px; left: 90px; animation-delay: 3.5s;">
+                <div class="b-petal" style="background: #4CAF50; transform: rotate(0deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #4CAF50; transform: rotate(72deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #4CAF50; transform: rotate(144deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #4CAF50; transform: rotate(216deg) translateY(-12px);"></div>
+                <div class="b-petal" style="background: #4CAF50; transform: rotate(288deg) translateY(-12px);"></div>
+                <div class="b-center"></div>
+            </div>
+
+            <!-- Foliage/Leaves -->
+            <div class="leaf" style="bottom: 100px; left: 60px; transform: rotate(-45deg);"></div>
+            <div class="leaf" style="bottom: 120px; left: 140px; transform: rotate(45deg);"></div>
+            <div class="leaf" style="bottom: 80px; left: 90px; transform: rotate(10deg);"></div>
+            <div class="leaf" style="bottom: 150px; left: 110px; transform: rotate(-20deg);"></div>
+            <div class="leaf" style="bottom: 140px; left: 50px; transform: rotate(30deg);"></div>
+
+            <!-- Ribbon -->
+            <div class="ribbon" style="left: 70px;">
+                <div style="width: 10px; height: 10px; background: #eee; border-radius: 50%;"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <h1 class="fade-in-up">Anneler Günü Kutlaması <span class="heart-icon pulse">❤️</span></h1>
         <p class="subtitle fade-in-up">Sana çok sevgi dolu günler diliyorum</p>
